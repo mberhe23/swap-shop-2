@@ -1,0 +1,38 @@
+<div class="container">
+  <%# title %>
+  <div class="page-title">
+    <div class="header">
+      <h1><%= @listing.title %></h1>
+    </div>
+  </div>
+  <%# bootstrap carousel %>
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <% @listing.photos.each do |photo| %>
+        <% if photo == @listing.photos.first %>
+          <div class="carousel-item active">
+            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+          </div>
+        <% else %>
+          <div class="carousel-item">
+            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <%# link to listings index page %>
+  </div>
+    <button type="button" class="btn btn-outline-primary"><%= link_to "Keep browsing", listings_path %></button>
+  </div>
+
+</div>

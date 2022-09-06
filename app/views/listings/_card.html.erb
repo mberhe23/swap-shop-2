@@ -1,0 +1,21 @@
+<%= link_to listing, class: "text-decoration-none" do %>
+  <div class="card-item">
+    <%= cl_image_tag listing.photos.first.key %>
+    <div class="card-item-infos">
+      <div link_to listing>
+        <h2> <%= listing.title %> </h2>
+        <p> <%= listing.description %> </p>
+      </div>
+      <%# add link to user profile below %>
+      <h2> <%= listing.user.first_name %>'s item </h2>
+      <%= cl_image_tag(
+      listing.user.photo.key,
+      gravity: "face",
+      width: 50,
+      height: 50,
+      crop: :fill,
+      class: "avatar-bordered card"
+     ) %>
+    </div>
+  </div>
+<% end %>

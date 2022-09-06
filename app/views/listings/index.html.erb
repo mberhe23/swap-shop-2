@@ -1,0 +1,15 @@
+<div class="page-title">
+  <div class="header">
+    Available Items
+  </div>
+</div>
+<div class="flex-container">
+  <% if @listings.count > 0 %>
+    <% @listings.each do |listing| %>
+      <%= render "listings/card", listing: listing %>
+    <% end %>
+  <% else %>
+    <h3><i class="fa-solid fa-face-frown"></i> Nothing availabe near you <i class="fa-solid fa-face-frown"></i></h3>
+    <p>Please post your unwanted items <i class="fa-solid fa-shirt"></i> and share our site with your friends.</p>
+  <% end %>
+</div>

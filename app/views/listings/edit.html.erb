@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h1>listing/edit page</h1>
+</div>
+<div class="listing-new-form">
+  <div class="listing-new-form-content">
+    <%= simple_form_for @listing do |f| %>
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :category %>
+      <%# <%= f.input :condtion %>
+      <div>
+        <%= f.input :photo %>
+        <%= f.submit "Create", class: "btn create-btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

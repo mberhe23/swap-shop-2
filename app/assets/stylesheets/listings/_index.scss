@@ -1,0 +1,16 @@
+@import "config/colors";
+
+.header {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  font-weight: 600;
+  font-size: 30px;
+  color: $green;
+  padding: 30px 0 30px 0;
+}
+
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}

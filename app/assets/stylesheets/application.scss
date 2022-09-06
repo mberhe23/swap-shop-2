@@ -10,3 +10,16 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+@import "pages/home";
+
+@import "listings/index";
+@import "listings/new";
+@import "listings/show";
+
+// @import "requests/index";
+// @import "requests/new";
+// @import "requests/show";
+
+//  Components
+@import "components/card";

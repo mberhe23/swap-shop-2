@@ -1,0 +1,24 @@
+.listing-new-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.listing-new-form-content {
+  background-color: rgb(239, 234, 222);
+  padding: 2% 3%;
+  border-radius: 5px;
+  width: 45%;
+  margin-bottom: 3%;
+}
+
+.listing-new-form-content input {
+  border-radius: 2px;
+}
+
+.listing-new-btns {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

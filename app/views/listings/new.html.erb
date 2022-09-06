@@ -1,0 +1,22 @@
+<div class="page-title">
+  <div class="sign-up">
+  Create a Listing!
+  </div>
+</div>
+<div class="listing-new-form">
+  <div class="listing-new-form-content">
+    <%= simple_form_for @listing do |f| %>
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :category %>
+      <%= f.input :condition %>
+      <%= f.input :photos, as: :file, required: true,
+        input_html: { multiple: true ,:class => "upload-box"},
+        id: "photo-btn"%>
+      <div class="listing-new-btns form-actions">
+        <%= f.submit "Create", class: "btn create-btn" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
