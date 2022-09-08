@@ -6,7 +6,7 @@
 <div class="flex-container">
   <% if @listings.count > 0 %>
     <% @listings.each do |listing| %>
-      <%= render "listings/card", listing: listing %>
+      <%= render "shared/card", listing: listing %>
     <% end %>
   <% else %>
     <h3><i class="fa-solid fa-face-frown"></i> Nothing availabe near you <i class="fa-solid fa-face-frown"></i></h3>
