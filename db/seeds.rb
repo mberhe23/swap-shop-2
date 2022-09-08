@@ -11,27 +11,25 @@ User.destroy_all
 
 # Users
 puts "---creating fake users---"
-default_password = "123456"
 
-user_names = ["Andy", "Brenda", "Francine", "Georgia", "Jessica", "Melissa"]
-
-users = []
-user_names.each do |user|
-  users << User.create!(
-    email: "#{user.downcase}@users.com",
-    password: default_password,
-    first_name: user
+10.times do
+  puts "Creating user..."
+  user = User.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: '123456'
   )
-end
-
 # photos will be sent to cloudinary
-users.map do |user|
-  file = File.open("db/support/#{user.first_name}.jpg")
-  user.photo.attach(io: file, filename: "#{user.first_name}.jpg", content_type: 'image/jpg')
-  user.save!
-end
+  image_url = "https://source.unsplash.com/200x200/?profile picture"
+  downloaded_image = URI.open(image_url)
+  user.photo.attach(io: downloaded_image, filename: "user-#{user.id}")
+  # user.photo.attach(io: File.open(Rails.root.join('app/assets/images/default_avatar.jpg')), filename: 'default_avatar.jpg')
 
-puts "---done---"
+  user.save
+  puts "User #{user.id} has been created."
+end
+puts "---users have been created---"
 
 # Listings
 puts "---creating fake listings---"
@@ -64,4 +62,4 @@ titles.map do |title|
   # add more photos?
 end
 
-puts "---done---"
+puts "---listings have been created---"

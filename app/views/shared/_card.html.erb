@@ -11,15 +11,12 @@
         <p> <%= listing.description %> </p>
       </div>
       <%# add link to user profile below %>
-      <h2> <%= listing.user.first_name %>'s item </h2>
-      <%= cl_image_tag(
-      listing.user.photo.key,
-      gravity: "face",
-      width: 50,
-      height: 50,
-      crop: :fill,
-      class: "avatar-bordered card"
-     ) %>
+      <% if listing.user.photo.attached? %>
+        <%# <%= cl_image_tag(listing.user.photo.key, gravity: "face", width: 40, height: 40, crop: :fill, class: "avatar-bordered card") %>
+        <%= cl_image_tag(listing.user.photo.key, gravity: "face", class: "avatar") %>
+      <% else %>
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+      <% end %>
     </div>
   </div>
 <% end %>
