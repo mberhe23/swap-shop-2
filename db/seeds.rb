@@ -49,6 +49,9 @@ categories = ["tops", "bottoms", "outerwear", "dresses", "shoes"]
   image_url = "https://source.unsplash.com/200x200/?clothing"
   downloaded_image = URI.open(image_url)
   listing.photos.attach(io: downloaded_image, filename: "listing-#{listing.id}")
+  image_url = "https://source.unsplash.com/200x200/?clothing"
+  downloaded_image = URI.open(image_url)
+  listing.photos.attach(io: downloaded_image, filename: "listing-#{listing.id}")
   listing.save
   puts "Listing #{listing.id} has been created."
 
