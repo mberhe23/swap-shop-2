@@ -1,0 +1,22 @@
+<%= link_to listing, class: "text-decoration-none" do %>
+  <div class="card-item">
+  <% if listing.photos.attached? %>
+    <%= cl_image_tag listing.photos.first.key %>
+  <% else %>
+    <%= image_tag "https://images.unsplash.com/photo-1523381294911-8d3cead13475?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80" %>
+  <% end %>
+    <div class="card-item-infos">
+      <div link_to listing>
+        <h2> <%= listing.title %> </h2>
+        <p> <%= listing.description %> </p>
+      </div>
+      <%# add link to user profile below %>
+      <% if listing.user.photo.attached? %>
+        <%# <%= cl_image_tag(listing.user.photo.key, gravity: "face", width: 40, height: 40, crop: :fill, class: "avatar-bordered card") %>
+        <%= cl_image_tag(listing.user.photo.key, gravity: "face", class: "avatar") %>
+      <% else %>
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

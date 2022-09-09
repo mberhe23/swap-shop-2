@@ -11,30 +11,51 @@ User.destroy_all
 
 # Users
 puts "---creating fake users---"
-default_password = "123456"
-
-user_names = ["Andy", "Brenda", "Francine", "Georgia", "Jessica", "Melissa"]
 
 users = []
-user_names.each do |user|
-  users << User.create!(
-    email: "#{user.downcase}@users.com",
-    password: default_password,
-    first_name: user
+
+10.times do
+  user = User.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: '123456'
   )
+  # photos will be sent to cloudinary
+  image_url = "https://source.unsplash.com/200x200/?profile picture"
+  downloaded_image = URI.open(image_url)
+  user.photo.attach(io: downloaded_image, filename: "user-#{user.id}")
+  user.save
+  users.push(user)
+  puts "User #{user.id} has been created."
 end
-
-# photos will be sent to cloudinary
-users.map do |user|
-  file = File.open("db/support/#{user.first_name}.jpg")
-  user.photo.attach(io: file, filename: "#{user.first_name}.jpg", content_type: 'image/jpg')
-  user.save!
-end
-
-puts "---done---"
+puts "---users have been created---"
 
 # Listings
 puts "---creating fake listings---"
+
+condition_arr = ["New", "Used like new", "Used good", "Used fair", "Distressed"]
+categories = ["tops", "bottoms", "outerwear", "dresses", "shoes"]
+
+50.times do
+  listing = Listing.new(
+    title: Faker::Lorem.sentence,
+    description: Faker::Lorem.paragraph,
+    category: categories.sample,
+    condition: condition_arr.sample,
+    user: users.sample
+  )
+  # photos will be sent to cloudinary
+  image_url = "https://source.unsplash.com/200x200/?clothing"
+  downloaded_image = URI.open(image_url)
+  listing.photos.attach(io: downloaded_image, filename: "listing-#{listing.id}")
+  listing.save
+  puts "Listing #{listing.id} has been created."
+
+end
+puts "---listings have been created---"
+
+
 
 # listings = {
 #   tops: "t-shirt",
@@ -48,20 +69,20 @@ puts "---creating fake listings---"
 #   create a method to grab the key as the category and the value as the title?
 # end
 
-titles = ["jeans", "blouse", "coat", "long dress", "jean jacket"]
-categories = ["tops", "bottoms", "outerwear", "dresses", "shoes"]
+# titles = ["jeans", "blouse", "coat", "long dress", "jean jacket"]
+# categories = ["tops", "bottoms", "outerwear", "dresses", "shoes"]
 
-titles.map do |title|
-  file2 = File.open("db/support/#{title.parameterize}.jpg")
-  listing = Listing.new(
-    user: users.sample,
-    title: title,
-    description: "Something about the item.",
-    category: categories.sample
-  )
-  listing.photos.attach(io: file2, filename: "#{title.parameterize}.jpg", content_type: 'image/jpg')
-  listing.save!
+# titles.map do |title|
+#   file2 = File.open("db/support/#{title.parameterize}.jpg")
+#   listing = Listing.new(
+#     user: users.sample,
+#     title: title,
+#     description: "Something about the item.",
+#     category: categories.sample
+#   )
+#   listing.photos.attach(io: file2, filename: "#{title.parameterize}.jpg", content_type: 'image/jpg')
+#   listing.save!
   # add more photos?
-end
 
-puts "---done---"
+
+# puts "---listings have been created---"

@@ -1,6 +1,4 @@
 // Specific CSS for your home-page
-@import "../components/navbar";
-@import "../components/footer";
 
 .banner {
   background-size: cover;
@@ -21,4 +19,13 @@
   color: white;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.top-listings-home {
+  padding: 10px 0 20px 0;
+}
+
+.home-btns {
+  text-align: center;
+  padding: 0 0 2% 0;
 }
