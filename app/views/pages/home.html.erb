@@ -5,8 +5,20 @@
     <a class="btn btn-flat" href="/listings">Explore</a>
   </div>
 </div>
-<div class="flex-container">
-  <% @listings.first(3).each do |listing| %>
-    <%= render "shared/card", listing: listing %>
-  <% end %>
+<div class="page-title">
+  <div class="header">
+    <h2>Trending near you!</h2>
+  </div>
+</div>
+<div class="top-listings-home">
+  <div class="flex-container">
+    <% @listings.first(3).each do |listing| %>
+      <%= render "shared/card", listing: listing %>
+    <% end %>
+  </div>
+</div>
+<div>
+  <div class="home-btns">
+    <a class="btn btn-outline-secondary" href="/listings">Explore</a>
+  </div>
 </div>
